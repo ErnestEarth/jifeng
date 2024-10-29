@@ -145,11 +145,6 @@ public:
     }
 };
 
-istream& operator>> (istream& in, Test& dst) {
-    in >> dst.id;
-    return in;
-}
-
 int main() {
     Test sum;
     int s = sum(3, 4);	// sum 看上去像是一个函数，称为 “函数对象”
