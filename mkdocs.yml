@@ -57,6 +57,14 @@ nav:
     - 课程简介: Software_Engineering/index.md
   - 机器学习概论: 
     - 课程简介: Introduction_to_Machine_Learning/index.md
+    - ch 1 绪论: Introduction_to_Machine_Learning/ch1.md
+    - ch 2 决策树学习: Introduction_to_Machine_Learning/ch2.md
+    - ch 3 贝叶斯学习: Introduction_to_Machine_Learning/ch3.md
+    - ch 4 马尔可夫模型: Introduction_to_Machine_Learning/ch4.md
+    - ch 5 假设检验: Introduction_to_Machine_Learning/ch5.md
+    - ch 6 基于实例的学习: Introduction_to_Machine_Learning/ch6.md
+    - ch 7 支持向量机: Introduction_to_Machine_Learning/ch7.md
+    - ch 8 无监督学习: Introduction_to_Machine_Learning/ch8.md
   - 人工智能原理: 
     - 课程简介: Principles_of_Artificial_Intelligence/index.md
 
