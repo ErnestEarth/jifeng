@@ -15,7 +15,7 @@
 
 ## 2. 隐马尔可夫模型
 
-![image-20241203151144950](C:/Users/doure/AppData/Roaming/Typora/typora-user-images/image-20241203151144950.png)
+![隐马尔可夫模型](img/隐马尔可夫模型.png)
 
 需要知道如下数据集：
 
@@ -31,9 +31,9 @@ $P(u_1\dots u_n|w_1\dots w_n) = \Pi_{i=1}^n P(u_i|w_i)$
 
 ## 3. 评估问题
 
-![image-20241203151820752](C:/Users/doure/AppData/Roaming/Typora/typora-user-images/image-20241203151820752.png)
+![评估问题1](img/评估问题1.png)
 
-![image-20241203151848651](C:/Users/doure/AppData/Roaming/Typora/typora-user-images/image-20241203151848651.png)
+![评估问题2](img/评估问题2.png)
 
 这是一种枚举算法，计算时间复杂度为 $O(2TN^T)$，其中 $T$ 表示所有可能状态序列的长度。
 
@@ -45,7 +45,7 @@ $P(u_1\dots u_n|w_1\dots w_n) = \Pi_{i=1}^n P(u_i|w_i)$
 
 **后向算法**：
 
-![image-20241203153135045](C:/Users/doure/AppData/Roaming/Typora/typora-user-images/image-20241203153135045.png)
+![后向算法](img/后向算法.png)
 
 ## 4. 解码问题
 
@@ -53,11 +53,11 @@ $P(u_1\dots u_n|w_1\dots w_n) = \Pi_{i=1}^n P(u_i|w_i)$
 
 **维特比算法**：
 
-![image-20241203154127350](C:/Users/doure/AppData/Roaming/Typora/typora-user-images/image-20241203154127350.png)
+![维特比算法1](img/维特比算法1.png)
 
-![image-20241203154214289](C:/Users/doure/AppData/Roaming/Typora/typora-user-images/image-20241203154214289.png)
+![维特比算法2](img/维特比算法2.png)
 
-![image-20241203154347181](C:/Users/doure/AppData/Roaming/Typora/typora-user-images/image-20241203154347181.png)
+![维特比算法3](img/维特比算法3.png)
 
 ## 5. 隐马尔可夫模型的应用
 
