@@ -31,14 +31,14 @@ nav:
   - 离散数学: 
     - 课程简介: Discrete_Mathematics/index.md
     - ch1 命题逻辑的基本概念: Discrete_Mathematics/ch1.md
-    - ch2 命题逻辑的等值和推理演算: Discrete_Mathematics/ch2.md
+    - ch2 命题逻辑的推理演算: Discrete_Mathematics/ch2.md
     - ch3 命题逻辑的公理化: Discrete_Mathematics/ch3.md
     - ch4 谓词逻辑的基本概念: Discrete_Mathematics/ch4.md
-    - ch5 谓词逻辑的等值和推理演算: Discrete_Mathematics/ch5.md
+    - ch5 谓词逻辑的推理演算: Discrete_Mathematics/ch5.md
     - ch6 集合: Discrete_Mathematics/ch6.md
     - ch7 关系: Discrete_Mathematics/ch7.md
     - ch8 函数: Discrete_Mathematics/ch8.md
-    - ch9 实数集合与集合的基数: Discrete_Mathematics/ch9.md
+    - ch9 实数集合: Discrete_Mathematics/ch9.md
   - 数据结构: 
     - 课程简介: Data_Structure/index.md
   - 计组原理: 
