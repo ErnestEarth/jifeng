@@ -28,7 +28,9 @@ $$error_s(h) = \frac{1}{n} \sum_{x\in S} \delta(f(x) \ne h(x)) = \frac{r}{n}$$
 
 $$error_D(h) = Pr_{x\in D}[f(x) \ne h(x)] = p$$
 
-于是 $$E[r] = np, E[error_S(h)] = p = error_D(h)$$
+于是
+
+$$E[r] = np, E[error_S(h)] = p = error_D(h)$$
 
 $$\sigma_{error_S(h)} = \frac{\sigma_r}{n} = \frac{\sqrt{np(1-p)}}{n} \approx \sqrt{\frac{error_S(h)(1-error_S(h))}{n}}$$
 
