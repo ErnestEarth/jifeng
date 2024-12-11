@@ -42,8 +42,12 @@ $$\sigma_{error_S(h)} = \frac{\sigma_r}{n} = \frac{\sqrt{np(1-p)}}{n} \approx \s
 
 伯努利分布较难计算置信区间，但正态分布下就很容易计算置信区间。一般情况下，当 $n>30$，$np(1-p)>5$ 时，我们可以将二项分布近似为正态分布。
 
-于是，假设我们的置信度为 $95\%$，则置信区间可以近似为 $$error_S(h) ± 1.96\frac{\sqrt{np(1-p)}}{n} \approx \sqrt{\frac{error_S(h)(1-error_S(h))}{n}}$$
+于是，假设我们的置信度为 $95\%$，则置信区间可以近似为
 
-单边置信区间为 $$error_S(h) + 1.645\frac{\sqrt{np(1-p)}}{n} \approx \sqrt{\frac{error_S(h)(1-error_S(h))}{n}}$$
+$$error_S(h) ± 1.96\frac{\sqrt{np(1-p)}}{n} \approx \sqrt{\frac{error_S(h)(1-error_S(h))}{n}}$$
+
+单边置信区间为
+
+$$error_S(h) + 1.645\frac{\sqrt{np(1-p)}}{n} \approx \sqrt{\frac{error_S(h)(1-error_S(h))}{n}}$$
 
 中心极限定理：对于任意的独立同分布（$\mu , \sigma^2$，其中方差为有限值），只要数据量足够大，那么最终该分布趋近于正态分布，均值为 $\mu$，方差为 $\sigma^2 / n$。
