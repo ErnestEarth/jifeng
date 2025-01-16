@@ -56,18 +56,94 @@ nav:
     - ch13 排序: Data_Structure/ch13.md
   - 计组原理: 
     - 课程简介: Principles_of_Computer_Organization/index.md
+    - ch1 计算机系统概述: Principles_of_Computer_Organization/ch1.md
+    - ch2 数据的表示、运算与校验: Principles_of_Computer_Organization/ch2.md
+    - ch3 CPU 子系统: Principles_of_Computer_Organization/ch3.md
+    - ch4 存储子系统: Principles_of_Computer_Organization/ch4.md
+    - ch5 总线与 I/O 子系统: Principles_of_Computer_Organization/ch5.md
+    - ch6 I/O 设备及其接口: Principles_of_Computer_Organization/ch6.md
   - 算法分析: 
     - 课程简介: Algorithm_Design_and_Analysis/index.md
+    - ch1 算法概述: Algorithm_Design_and_Analysis/ch1.md
+    - ch2 算法分析基础: Algorithm_Design_and_Analysis/ch2.md
+    - ch3 图算法: Algorithm_Design_and_Analysis/ch3.md
+    - ch4 贪心算法: Algorithm_Design_and_Analysis/ch4.md
+    - ch5 分治算法: Algorithm_Design_and_Analysis/ch5.md
+    - ch6 动态规划: Algorithm_Design_and_Analysis/ch6.md
+    - ch7 网络流: Algorithm_Design_and_Analysis/ch7.md
+    - ch8 NP 问题与计算困难性: Algorithm_Design_and_Analysis/ch8.md
+    - ch9 近似算法: Algorithm_Design_and_Analysis/ch9.md
+    - ch10 本地查找: Algorithm_Design_and_Analysis/ch10.md
+    - ch11 随机算法: Algorithm_Design_and_Analysis/ch11.md
   - 操作系统: 
     - 课程简介: Operating_System/index.md
+    - ch1 操作系统概述: Operating_System/ch1.md
+    - ch2 实验 0 操作系统实验环境准备: Operating_System/ch2.md
+    - ch3 启动、中断、异常和系统调用: Operating_System/ch3.md
+    - ch4 实验 1 bootloader 启动 ucore os: Operating_System/ch4.md
+    - ch5 物理内存管理：连续内存分配: Operating_System/ch5.md
+    - ch6 物理内存管理：非连续内存分配: Operating_System/ch6.md
+    - ch7 实验 2 物理内存管理: Operating_System/ch7.md
+    - ch8 虚拟内存概念: Operating_System/ch8.md
+    - ch9 页面置换算法: Operating_System/ch9.md
+    - ch10 实验 3 虚拟内存管理: Operating_System/ch10.md
+    - ch11 进程和线程: Operating_System/ch11.md
+    - ch12 进程控制: Operating_System/ch12.md
+    - ch13 实验 4 内核线程管理: Operating_System/ch13.md
+    - ch14 实验 5 用户进程管理: Operating_System/ch14.md
+    - ch15 处理机调度: Operating_System/ch15.md
+    - ch16 实验 6 调度器: Operating_System/ch16.md
+    - ch17 同步互斥: Operating_System/ch17.md
+    - ch18 信号量与管程: Operating_System/ch18.md
+    - ch19 实验 7 同步互斥: Operating_System/ch19.md
+    - ch20 死锁和进程通信: Operating_System/ch20.md
+    - ch21 文件系统: Operating_System/ch21.md
+    - ch22 实验 8 文件系统: Operating_System/ch22.md
+    - ch23 I/O 子系统: Operating_System/ch23.md
   - 计算机网络: 
-    - 课程简介: Operating_System/index.md
+    - 课程简介: Computer_Networks/index.md
+    - ch 1 概述: Computer_Networks/ch1.md
+    - ch 2 物理层: Computer_Networks/ch2.md
+    - ch 3 数据链路层: Computer_Networks/ch3.md
+    - ch 4 介质访问控制子层: Computer_Networks/ch4.md
+    - ch 5 网络层: Computer_Networks/ch5.md
+    - ch 6 传输层: Computer_Networks/ch6.md
+    - ch 7 应用层: Computer_Networks/ch7.md
   - 数据库系统: 
     - 课程简介: Principles_and_Development_of_Database_Systems/index.md
+    - ch 1 数据库系统概论: Principles_and_Development_of_Database_Systems/ch1.md
+    - ch 2 数据库关系模型: Principles_and_Development_of_Database_Systems/ch2.md
+    - ch 3 数据库操作 SQL 语言: Principles_and_Development_of_Database_Systems/ch3.md
+    - ch 4 数据库设计与实现: Principles_and_Development_of_Database_Systems/ch4.md
+    - ch 5 数据库管理: Principles_and_Development_of_Database_Systems/ch5.md
+    - ch 6 数据库应用编程: Principles_and_Development_of_Database_Systems/ch6.md
+    - ch 7 NoSQL 数据库技术: Principles_and_Development_of_Database_Systems/ch7.md
   - 编译原理: 
     - 课程简介: Compiler_Principle/index.md
+    - ch1 绪论: Compiler_Principle/ch1.md
+    - ch2 程序语言概论: Compiler_Principle/ch2.md
+    - ch3 词法分析: Compiler_Principle/ch3.md
+    - ch4 语法分析 —— 自上而下分析: Compiler_Principle/ch4.md
+    - ch5 语法分析 —— 自下而上分析: Compiler_Principle/ch5.md
+    - ch6 属性文法和语法翻译制导: Compiler_Principle/ch6.md
+    - ch7 语义分析和中间代码生成: Compiler_Principle/ch7.md
+    - ch8 代码优化: Compiler_Principle/ch8.md
   - 软件工程: 
     - 课程简介: Software_Engineering/index.md
+    - ch1 初识软件工程: Software_Engineering/ch1.md
+    - ch2 编写高质量代码: Software_Engineering/ch2.md
+    - ch3 单元测试: Software_Engineering/ch3.md
+    - ch4 软件开发过程: Software_Engineering/ch4.md
+    - ch5 团队开发管理: Software_Engineering/ch5.md
+    - ch6 敏捷开发与配置管理: Software_Engineering/ch6.md
+    - ch7 需求获取: Software_Engineering/ch7.md
+    - ch8 用例建模: Software_Engineering/ch8.md
+    - ch9 面向对象分析与设计: Software_Engineering/ch9.md
+    - ch10 行为建模: Software_Engineering/ch10.md
+    - ch11 软件系统设计: Software_Engineering/ch11.md
+    - ch12 软件交互设计: Software_Engineering/ch12.md
+    - ch13 软件系统测试: Software_Engineering/ch13.md
+    - ch14 软件交付与维护: Software_Engineering/ch14.md
   - 机器学习概论: 
     - 课程简介: Introduction_to_Machine_Learning/index.md
     - ch 1 绪论: Introduction_to_Machine_Learning/ch1.md
@@ -102,19 +178,19 @@ theme:
         name: 暗色
     
   features:
-    - navigation.instant # 单页应用
-    - navigation.tabs # 页面上方的标签页
-    - navigation.tracking # 页面滚动时，导航栏高亮当前页面
-    - navigation.sections # 使导航栏分块
-    - navigation.expand # 默认展开导航
-    - navigation.prune # 只渲染当前页面的导航
-    - toc.follow # 滚动的时候侧边栏自动跟随
-    - navigation.top # 返回顶部按钮
-    - search.suggest # 补全建议
-    - search.highlight # 搜索结果高亮
-    - search.share # 搜索结果分享
-    - navigation.footer # 页脚提示下一章
-    - content.code.copy # 代码段上的赋值按钮
+    - navigation.instant    # 单页应用
+    - navigation.tabs       # 页面上方的标签页
+    - navigation.tracking   # 页面滚动时，导航栏高亮当前页面
+    - navigation.sections   # 使导航栏分块
+    - navigation.expand     # 默认展开导航
+    - navigation.prune      # 只渲染当前页面的导航
+    - toc.follow            # 滚动的时候侧边栏自动跟随
+    - navigation.top        # 返回顶部按钮
+    - search.suggest        # 补全建议
+    - search.highlight      # 搜索结果高亮
+    - search.share          # 搜索结果分享
+    - navigation.footer     # 页脚提示下一章
+    - content.code.copy     # 代码段上的赋值按钮
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -122,9 +198,9 @@ extra_javascript:
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:
-  - pymdownx.highlight:  # 代码高亮
+  - pymdownx.highlight:     # 代码高亮
       anchor_linenums: true
-  - admonition # 警告语法
+  - admonition              # 警告语法
   - def_list
   - footnotes
   - abbr
@@ -132,39 +208,39 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - md_in_html
-  - pymdownx.arithmatex: # latex支持
+  - pymdownx.arithmatex:    # latex支持
       generic: true
   - toc:
-      permalink: true # 固定标题位置为当前位置
-      toc_depth: 3 # 目录深度
-  - pymdownx.highlight: # 代码块高亮
+      permalink: true       # 固定标题位置为当前位置
+      toc_depth: 3          # 目录深度
+  - pymdownx.highlight:     # 代码块高亮
       anchor_linenums: true
-      linenums: true # 显示行号
-      use_pygments: true # 代码高亮
+      linenums: true        # 显示行号
+      use_pygments: true    # 代码高亮
       pygments_lang_class: true
-      auto_title: true # 显示编程语言名称
-      linenums_style: pymdownx-inline # 行号样式,防止复制的时候复制行号
-  - pymdownx.betterem # 强调美化,比如**text**会被美化
-  - pymdownx.caret # 上标和下标
-  - pymdownx.mark # 上标和下标
-  - pymdownx.tilde # 上标和下标
-  - pymdownx.keys # 显示按键组合
+      auto_title: true      # 显示编程语言名称
+      linenums_style: pymdownx-inline   # 行号样式,防止复制的时候复制行号
+  - pymdownx.betterem       # 强调美化,比如**text**会被美化
+  - pymdownx.caret          # 上标和下标
+  - pymdownx.mark           # 上标和下标
+  - pymdownx.tilde          # 上标和下标
+  - pymdownx.keys           # 显示按键组合
   - pymdownx.critic
-  - pymdownx.details # 可以折叠的代码块 ??? note 可以让警告变成折叠的
+  - pymdownx.details        # 可以折叠的代码块 ??? note 可以让警告变成折叠的
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-  - pymdownx.magiclink # 自动识别链接
-  - pymdownx.smartsymbols # 智能符号
-  - pymdownx.snippets # 代码段
+  - pymdownx.magiclink      # 自动识别链接
+  - pymdownx.smartsymbols   # 智能符号
+  - pymdownx.snippets       # 代码段
   - pymdownx.tasklist:
       custom_checkbox: true # 自定义复选框
   - attr_list
   # - pymdownx.emoji:
   #     emoji_index: !!python/name:material.extensions.emoji.twemoji
   #     emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.superfences: # 代码块中支持 Mermaid
-      custom_fences: # 支持 Mermaid
+  - pymdownx.superfences:   # 代码块中支持 Mermaid
+      custom_fences:        # 支持 Mermaid
       - name: mermaid
         class: mermaid
         format: !!python/name:pymdownx.superfences.fence_code_format
@@ -174,11 +250,11 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
-  - meta # 支持Markdown文件上方自定义标题标签等
+  - meta                    # 支持Markdown文件上方自定义标题标签等
   - tables
 
 extra:
-  generator: false  #删除页脚显示“使用 MkDocs 材料制造”
+  generator: false          # 删除页脚显示“使用 MkDocs 材料制造”
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/ErnestEarth/jifeng
