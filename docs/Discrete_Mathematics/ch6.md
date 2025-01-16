@@ -81,7 +81,7 @@
 
 【笛卡尔积】设 $A,B$ 为集合，用 $A$ 中元素为第一元素，$B$ 中元素为第二元素构成有序对。所有这样的有序对组成的集合称为 $A$ 和 $B$ 的笛卡尔积，记作 $A \times B$。符号化表示为 $A\times B = \{<x,y>|x\in A \land y \in B\}$。
 
-【$n$ 阶笛卡尔积】若 $n\in N$ 且 $n>1$，$A_1,A_2,.., A_n$ 是 $n$ 个集合，它们的 $n$ 阶笛卡尔积记作 $A_1\times A_2\times..\times A_n$，并定义 $A_1\times A_2\times..\times A_n=\{<x_1,x_2,..,x_n> | x_1\in A_1 \land x_2 \in A_2 \land .. \land x_n\in A_n\} $
+【$n$ 阶笛卡尔积】若 $n\in N$ 且 $n>1$，$A_1,A_2,.., A_n$ 是 $n$ 个集合，它们的 $n$ 阶笛卡尔积记作 $A_1\times A_2\times..\times A_n$，并定义 $A_1\times A_2\times..\times A_n=\{<x_1,x_2,..,x_n> | x_1\in A_1 \land x_2 \in A_2 \land .. \land x_n\in A_n\}$
 
 【一元运算】广义并、广义交、幂集、绝对补运算
 
@@ -185,19 +185,10 @@
 - $|A-B| \ge |A| - |B|$
 - $|A\oplus B| = |A| + |B| - 2|A\cap B|$
 
-【容斥原理】对有限集合 $A$ 和 $B$，$|A\cup B| = |A| + |B| - |A\cap B|$。该定理可推广到 $n$ 个集合的情形，若 $n\in N$ 且 $n>1$，$A_1,A_2,..,A_n$ 是有限集合，则 
-$$
-|A_1\cup A_2\cup .. \cup A_n| \\
-= \sum_{1\le i \le n}|A_i| - \sum_{1\le i<j\le n} |A_i\cap A_j| + \sum_{1 \le i<j<k\le n}|A_i\cap A_j\cap A_k| + .. + (-1)^{n-1}|A_1\cap A_2\cap .. \cap A_n|
-$$
-$|\bar{A}| = N - |A|$，其中 $N$ 是集合 $U$ 的元素个数，即不属于 $A$ 的元素个数等于集合的全体减去属于 $A$ 的元素的个数。一般有
-$$
-|\bar{A_1}\cap \bar{A_2}\cap .. \cap \bar{A_n}| \\
-\begin{align}
-= N - |A_1\cup A_2\cup .. \cup A_n| \\
-= N - \sum_{i=1}^n|A_i + \sum_{i=1}^n\sum_{j>i}|A_i \cap A_j| - \sum_{i=1}^n\sum_{j>i}\sum_{k>j}|A_i\cap A_j\cap A_k| + .. + (-1)^n|A_1\cap A_2\cap .. \cap A_n|
-\end{align}
-$$
+【容斥原理】对有限集合 $A$ 和 $B$，$|A\cup B| = |A| + |B| - |A\cap B|$。该定理可推广到 $n$ 个集合的情形，若 $n\in N$ 且 $n>1$，$A_1,A_2,..,A_n$ 是有限集合，则 $|A_1\cup A_2\cup .. \cup A_n|= \sum_{1\le i \le n}|A_i| - \sum_{1\le i<j\le n} |A_i\cap A_j| +\\ \sum_{1 \le i<j<k\le n}|A_i\cap A_j\cap A_k| + .. + (-1)^{n-1}|A_1\cap A_2\cap .. \cap A_n|$
+
+$|\bar{A}| = N - |A|$，其中 $N$ 是集合 $U$ 的元素个数，即不属于 $A$ 的元素个数等于集合的全体减去属于 $A$ 的元素的个数。一般有 $|\bar{A_1}\cap \bar{A_2}\cap .. \cap \bar{A_n}|= N - |A_1\cup A_2\cup .. \cup A_n| \\
+= N - \sum_{i=1}^n|A_i + \sum_{i=1}^n\sum_{j>i}|A_i \cap A_j| - \sum_{i=1}^n\sum_{j>i}\sum_{k>j}|A_i\cap A_j\cap A_k| + .. + (-1)^n|A_1\cap A_2\cap .. \cap A_n|$
 
 ## 6. 集合论公理系统
 
