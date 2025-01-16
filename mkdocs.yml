@@ -41,6 +41,19 @@ nav:
     - ch9 实数集合: Discrete_Mathematics/ch9.md
   - 数据结构: 
     - 课程简介: Data_Structure/index.md
+    - ch1 绪论: Data_Structure/ch1.md
+    - ch2 向量: Data_Structure/ch2.md
+    - ch3 列表: Data_Structure/ch3.md
+    - ch4 栈与队列: Data_Structure/ch4.md
+    - ch5 二叉树: Data_Structure/ch5.md
+    - ch6 图: Data_Structure/ch6.md
+    - ch7 图应用: Data_Structure/ch7.md
+    - ch8 二叉搜索树: Data_Structure/ch8.md
+    - ch9 高级搜索树: Data_Structure/ch9.md
+    - ch10 词典: Data_Structure/ch10.md
+    - ch11 优先级队列: Data_Structure/ch11.md
+    - ch12 串: Data_Structure/ch12.md
+    - ch13 排序: Data_Structure/ch13.md
   - 计组原理: 
     - 课程简介: Principles_of_Computer_Organization/index.md
   - 算法分析: 
