@@ -43,7 +43,7 @@ nav:
     - 课程简介: Data_Structure/index.md
     - ch1 绪论: Data_Structure/ch1.md
     - ch2 向量: Data_Structure/ch2.md
-    - ch3 列表: Data_Structure/ch3.md
+    - ch3 链表: Data_Structure/ch3.md
     - ch4 栈与队列: Data_Structure/ch4.md
     - ch5 二叉树: Data_Structure/ch5.md
     - ch6 图: Data_Structure/ch6.md
