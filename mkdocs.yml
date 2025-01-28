@@ -61,7 +61,6 @@ nav:
     - ch3 CPU 子系统: Principles_of_Computer_Organization/ch3.md
     - ch4 存储子系统: Principles_of_Computer_Organization/ch4.md
     - ch5 总线与 I/O 子系统: Principles_of_Computer_Organization/ch5.md
-    - ch6 I/O 设备及其接口: Principles_of_Computer_Organization/ch6.md
   - 算法分析: 
     - 课程简介: Algorithm_Design_and_Analysis/index.md
     - ch1 算法概述: Algorithm_Design_and_Analysis/ch1.md
