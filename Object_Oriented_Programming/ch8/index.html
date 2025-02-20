@@ -1,0 +1,1979 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="2024 年第三期疾风计划的学习笔记">
+      
+      
+        <meta name="author" content="南朔">
+      
+      
+        <link rel="canonical" href="https://ernestearth.github.io/jifeng/Object_Oriented_Programming/ch8/">
+      
+      
+        <link rel="prev" href="../ch7/">
+      
+      
+        <link rel="next" href="../ch9/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+    
+    
+      
+        <title>ch8 基于接口组合,应对复杂变化 - 疾风计划笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ch8" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="疾风计划笔记" class="md-header__button md-logo" aria-label="疾风计划笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            疾风计划笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ch8 基于接口组合,应对复杂变化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="亮色"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="亮色" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="暗色"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="暗色" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  课程概览
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Fundamentals_of_Programming/" class="md-tabs__link">
+          
+  
+  程设基础
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  面向对象
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Discrete_Mathematics/" class="md-tabs__link">
+          
+  
+  离散数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Data_Structure/" class="md-tabs__link">
+          
+  
+  数据结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Principles_of_Computer_Organization/" class="md-tabs__link">
+          
+  
+  计组原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Algorithm_Design_and_Analysis/" class="md-tabs__link">
+          
+  
+  算法分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Operating_System/" class="md-tabs__link">
+          
+  
+  操作系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Computer_Networks/" class="md-tabs__link">
+          
+  
+  计算机网络
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Principles_and_Development_of_Database_Systems/" class="md-tabs__link">
+          
+  
+  数据库系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Compiler_Principle/" class="md-tabs__link">
+          
+  
+  编译原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Software_Engineering/" class="md-tabs__link">
+          
+  
+  软件工程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Introduction_to_Machine_Learning/" class="md-tabs__link">
+          
+  
+  机器学习概论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Principles_of_Artificial_Intelligence/" class="md-tabs__link">
+          
+  
+  人工智能原理
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="疾风计划笔记" class="md-nav__button md-logo" aria-label="疾风计划笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+
+    </a>
+    疾风计划笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Fundamentals_of_Programming/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    程设基础
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    面向对象
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            面向对象
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程简介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch1 编程环境
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch2 基础语法(1)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch3 基础语法(2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch4 基础语法(3)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch5 找到对象,确定接口
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch6 算法横向拆分,分离步骤
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch7 算法纵向拆分,分离表示
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ch8 基于接口组合,应对复杂变化
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ch8 基于接口组合,应对复杂变化
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 已有资源的组合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 适当引入接口
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 接口不变时的功能变化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 装饰
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 责任传递与责任链
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch9 增加抽象层级,隔离复杂变化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Discrete_Mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    离散数学
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Data_Structure/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Principles_of_Computer_Organization/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计组原理
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Algorithm_Design_and_Analysis/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    算法分析
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Operating_System/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Computer_Networks/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Principles_and_Development_of_Database_Systems/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据库系统
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Compiler_Principle/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    编译原理
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Software_Engineering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    软件工程
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Introduction_to_Machine_Learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    机器学习概论
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Principles_of_Artificial_Intelligence/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能原理
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 已有资源的组合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 适当引入接口
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 接口不变时的功能变化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 装饰
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 责任传递与责任链
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ch8">ch8 基于接口组合，应对复杂变化<a class="headerlink" href="#ch8" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 已有资源的组合<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>使用已有代码的常用方式：<strong>继承</strong>、<strong>组合</strong>、<strong>实例化</strong>。</p>
+<p>栈 —— 一种<strong>后进先出</strong>的数据结构。首先用一个常规方法实现一个栈。</p>
+<div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">MyStack</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">m_data</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_top</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="n">MyStack</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_top</span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="n">m_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="n">MAX_SIZE</span><span class="p">];</span><span class="w">     </span><span class="c1">// MAX_SIZE 是一个事先定义好的常量</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="o">~</span><span class="n">MyStack</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="n">m_data</span><span class="p">;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><a href="#__codelineno-0-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><a href="#__codelineno-0-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">m_top</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><a href="#__codelineno-0-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">push</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><a href="#__codelineno-0-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_top</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><a href="#__codelineno-0-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">            </span><span class="n">m_data</span><span class="p">[</span><span class="o">++</span><span class="n">m_top</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><a href="#__codelineno-0-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><a href="#__codelineno-0-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><a href="#__codelineno-0-24"><span class="linenos" data-linenos="24 "></span></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><a href="#__codelineno-0-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><a href="#__codelineno-0-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="o">--</span><span class="n">m_top</span><span class="p">;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><a href="#__codelineno-0-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><a href="#__codelineno-0-28"><span class="linenos" data-linenos="28 "></span></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><a href="#__codelineno-0-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><a href="#__codelineno-0-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><a href="#__codelineno-0-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">m_top</span><span class="p">];</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><a href="#__codelineno-0-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><a href="#__codelineno-0-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><a href="#__codelineno-0-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">INT_MIN</span><span class="p">;</span><span class="w">             </span><span class="c1">// INT_MIN 是一个标准库中事先定义好的一个常量</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><a href="#__codelineno-0-35"><span class="linenos" data-linenos="35 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><a href="#__codelineno-0-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><a href="#__codelineno-0-37"><span class="linenos" data-linenos="37 "></span></a><span class="p">};</span>
+</code></pre></div>
+<p>下面使用已有的资源 <code>vector</code> 的<strong>组合</strong>来实现一个栈：</p>
+<div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">VectorStack</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_data</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">m_data</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">push</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="n">m_data</span><span class="p">.</span><span class="n">push_pack</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><a href="#__codelineno-1-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><a href="#__codelineno-1-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><a href="#__codelineno-1-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="n">m_data</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><a href="#__codelineno-1-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><a href="#__codelineno-1-17"><span class="linenos" data-linenos="17 "></span></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><a href="#__codelineno-1-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><a href="#__codelineno-1-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><a href="#__codelineno-1-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">m_data</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><a href="#__codelineno-1-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><a href="#__codelineno-1-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><a href="#__codelineno-1-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">INT_MIN</span><span class="p">;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><a href="#__codelineno-1-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><a href="#__codelineno-1-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><a href="#__codelineno-1-26"><span class="linenos" data-linenos="26 "></span></a><span class="p">};</span>
+</code></pre></div>
+<h2 id="2">2. 适当引入接口<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>对于<strong>实现可变</strong>，<strong>使用不变</strong>的类，需要一个统一的接口，以便于用户的使用，换言之，我们可以适当增加接口类。</p>
+<p>把 <code>Stack</code> 这个概念用于抽象类予以定义，其功能定义表现为类中的纯虚函数。使用抽象类传递参数和调用接口的功能，可以让我们集中注意力到接口应有的功能上，保持接口类的稳定不变，隔离实现的细节。</p>
+<div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">Stack</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Stack</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">push</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pop</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">top</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos="8 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">empty</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos="9 "></span></a><span class="p">};</span>
+</code></pre></div>
+<p><strong>继承</strong>接口类，重写所有虚函数，将实现细节的变化封装到实现类中，增加新的实现类达到<strong>实现可变</strong>的目的。</p>
+<div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">VectorStack</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Stack</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_data</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">m_data</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">push</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><a href="#__codelineno-3-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="n">m_data</span><span class="p">.</span><span class="n">push_pack</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><a href="#__codelineno-3-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><a href="#__codelineno-3-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><a href="#__codelineno-3-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><a href="#__codelineno-3-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="n">m_data</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><a href="#__codelineno-3-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><a href="#__codelineno-3-17"><span class="linenos" data-linenos="17 "></span></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><a href="#__codelineno-3-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><a href="#__codelineno-3-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><a href="#__codelineno-3-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">m_data</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><a href="#__codelineno-3-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><a href="#__codelineno-3-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><a href="#__codelineno-3-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">INT_MIN</span><span class="p">;</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><a href="#__codelineno-3-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><a href="#__codelineno-3-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><a href="#__codelineno-3-26"><span class="linenos" data-linenos="26 "></span></a><span class="p">};</span>
+</code></pre></div>
+<p>上面 <code>VectorStack</code> 的功能类似于一个转接器，将 <code>vector</code> 和 <code>stack</code> 实现了转接，通常称为<strong>适配器</strong>，上述程序设计模式称为<strong>适配器模式</strong>。使用组合实现适配，称作<strong>对象 Adapter</strong>。</p>
+<p>另一种实现方式是使用<strong>多重继承</strong>来实现，但此方式是否合理尚存争论。使用继承实现适配，称作<strong>类 Adapter</strong>。</p>
+<p>所谓<strong>实例化</strong>，就是可以将一些已有的模板直接实例化为具体数据类型即可使用的方式。</p>
+<h2 id="3">3. 接口不变时的功能变化<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>一个指向一段已释放的区域的指针，称为<strong>悬挂指针</strong>。此现象产生的原因是，起初多个指针指向同一个对象，当其中一个指针释放了这个对象时，其余指针就变成了悬挂指针。</p>
+<p>原因在于共享着同一个基础对象的指针互相不知道对方的存在，自以为独占对象。我们只需要让这些指针互相知道对方的存在就可以了，不需要知道是谁，只需要知道<strong>有几个</strong>。</p>
+<p>可以使用<strong>引用计数</strong>解决这个问题：跟踪基础对象被多少指针所共享，当引用计数为 <span class="arithmatex">\(0\)</span> 时再真正释放基础对象。</p>
+<div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">SmartPtr</span><span class="p">;</span><span class="w">             </span><span class="c1">// 声明 “智能指针” 模板类</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w">       </span><span class="c1">// 使用模板，允许指针指向任何类型</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">U_Ptr</span><span class="w"> </span><span class="p">{</span><span class="w">               </span><span class="c1">// 辅助指针，用于对引用次数进行计数</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SmartPtr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="n">U_Ptr</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">ptr</span><span class="p">),</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">            </span><span class="c1">// 初始计数为 1</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><a href="#__codelineno-4-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="o">~</span><span class="n">U_Ptr</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><a href="#__codelineno-4-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><a href="#__codelineno-4-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><a href="#__codelineno-4-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><a href="#__codelineno-4-17"><span class="linenos" data-linenos="17 "></span></a><span class="p">};</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><a href="#__codelineno-4-18"><span class="linenos" data-linenos="18 "></span></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><a href="#__codelineno-4-19"><span class="linenos" data-linenos="19 "></span></a><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w">       </span><span class="c1">// 使用模板，允许指针指向任何类型</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><a href="#__codelineno-4-20"><span class="linenos" data-linenos="20 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">SmartPtr</span><span class="w"> </span><span class="p">{</span><span class="w">            </span><span class="c1">// “智能指针”</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><a href="#__codelineno-4-21"><span class="linenos" data-linenos="21 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a><a href="#__codelineno-4-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="n">SmartPtr</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">rp</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">U_Ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ptr</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a><a href="#__codelineno-4-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="n">SmartPtr</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sp</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">rp</span><span class="p">(</span><span class="n">sp</span><span class="p">.</span><span class="n">rp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// 先复制</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a><a href="#__codelineno-4-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">        </span><span class="o">++</span><span class="n">rp</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">;</span><span class="w">        </span><span class="c1">// 拷贝构造函数，引用计数加一</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a><a href="#__codelineno-4-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a><a href="#__codelineno-4-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">    </span><span class="n">SmartPtr</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">rhs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a><a href="#__codelineno-4-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">        </span><span class="o">++</span><span class="n">rhs</span><span class="p">.</span><span class="n">rp</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">;</span><span class="w">    </span><span class="c1">// 将 rhs 的引用计数加一</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a><a href="#__codelineno-4-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">--</span><span class="n">rp</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">   </span><span class="c1">// 原来指向对象的引用计数减一</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a><a href="#__codelineno-4-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">rp</span><span class="p">;</span><span class="w">          </span><span class="c1">// 如果引用计数为 0 则释放基础对象</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a><a href="#__codelineno-4-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">        </span><span class="n">rp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rhs</span><span class="p">.</span><span class="n">rp</span><span class="p">;</span><span class="w">        </span><span class="c1">// 执行实际的赋值动作</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a><a href="#__codelineno-4-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a><a href="#__codelineno-4-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a><a href="#__codelineno-4-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">    </span><span class="o">~</span><span class="n">SmartPtr</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34"></a><a href="#__codelineno-4-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">--</span><span class="n">rp</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">   </span><span class="c1">// 析构函数，引用计数减一</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a><a href="#__codelineno-4-35"><span class="linenos" data-linenos="35 "></span></a><span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">rp</span><span class="p">;</span><span class="w">          </span><span class="c1">// 如果引用计数为 0 则释放基础对象</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36"></a><a href="#__codelineno-4-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37"></a><a href="#__codelineno-4-37"><span class="linenos" data-linenos="37 "></span></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">*</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38"></a><a href="#__codelineno-4-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">rp</span><span class="o">-&gt;</span><span class="n">p</span><span class="p">);</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39"></a><a href="#__codelineno-4-39"><span class="linenos" data-linenos="39 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40"></a><a href="#__codelineno-4-40"><span class="linenos" data-linenos="40 "></span></a><span class="w">    </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">-&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41"></a><a href="#__codelineno-4-41"><span class="linenos" data-linenos="41 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">rp</span><span class="o">-&gt;</span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42"></a><a href="#__codelineno-4-42"><span class="linenos" data-linenos="42 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43"></a><a href="#__codelineno-4-43"><span class="linenos" data-linenos="43 "></span></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44"></a><a href="#__codelineno-4-44"><span class="linenos" data-linenos="44 "></span></a><span class="w">    </span><span class="n">U_Ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">rp</span><span class="p">;</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45"></a><a href="#__codelineno-4-45"><span class="linenos" data-linenos="45 "></span></a><span class="p">};</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46"></a><a href="#__codelineno-4-46"><span class="linenos" data-linenos="46 "></span></a>
+<a id="__codelineno-4-47" name="__codelineno-4-47"></a><a href="#__codelineno-4-47"><span class="linenos" data-linenos="47 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48"></a><a href="#__codelineno-4-48"><span class="linenos" data-linenos="48 "></span></a><span class="w">    </span><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr1</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49"></a><a href="#__codelineno-4-49"><span class="linenos" data-linenos="49 "></span></a><span class="w">    </span><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr2</span><span class="p">(</span><span class="n">ptr1</span><span class="p">);</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50"></a><a href="#__codelineno-4-50"><span class="linenos" data-linenos="50 "></span></a><span class="w">    </span><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr2</span><span class="p">;</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51"></a><a href="#__codelineno-4-51"><span class="linenos" data-linenos="51 "></span></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">ptr1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52"></a><a href="#__codelineno-4-52"><span class="linenos" data-linenos="52 "></span></a><span class="w">    </span><span class="o">*</span><span class="n">ptr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53"></a><a href="#__codelineno-4-53"><span class="linenos" data-linenos="53 "></span></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">ptr2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54"></a><a href="#__codelineno-4-54"><span class="linenos" data-linenos="54 "></span></a>
+<a id="__codelineno-4-55" name="__codelineno-4-55"></a><a href="#__codelineno-4-55"><span class="linenos" data-linenos="55 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56"></a><a href="#__codelineno-4-56"><span class="linenos" data-linenos="56 "></span></a><span class="p">}</span>
+</code></pre></div>
+<p><code>SmartPtr&lt;int&gt;</code> 与 <code>int*</code> 有相同的接口：操作符 <code>*</code> 和 <code>-&gt;</code>，赋值操作符与初始化（拷贝构造），释放（析构）。<code>SmartPtr&lt;int&gt;</code> 比 <code>int*</code> 增加了一些控制操作：拷贝构造时引用计数加一，析构时引用计数减一，直到引用计数为 <span class="arithmatex">\(0\)</span> 时释放，赋值时对当前引用计数和参数引用计数分别处理。这种<strong>接口不变，功能变化</strong>的模式称为<strong>代理模式</strong>，用于对被代理对象进行控制，如引用计数控制、权限控制、远程代理、延迟初始化（对于初始化时间比较长的操作，实际使用时再初始化，减少初始化次数）等。</p>
+<h2 id="4">4. 装饰<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>将主要功能类与附加功能类分离开，通过在主体上<strong>添加装饰</strong>来实现附加功能，而无需修改主体，称为<strong>装饰模式</strong>。</p>
+<p><strong>装饰</strong>和<strong>策略</strong>都是通过对象的组合修改对象的功能，以组合替代继承，更加灵活。不同点是：</p>
+<ul>
+<li>策略模式修改了对象功能的内核，组件必须了解有哪些需要选择的策略</li>
+<li>装饰模式修改了对象功能的外壳，组件无需了解有哪些可以装饰的内容</li>
+</ul>
+<p><strong>装饰</strong>和<strong>代理</strong>都用来改变对象的行为，可以把装饰看成是一连串的代理。不同点是：</p>
+<ul>
+<li>装饰模式常用来对被装饰对象增加额外的行为，不影响被装饰对象的原有功能，不创建装饰对象，只是将新功能添加到已有对象上，经常多重嵌套装饰</li>
+<li>代理模式常用来对被代理对象进行更精细的控制，被代理对象不存在时，通常需要创建被代理对象，多重嵌套的情况比较少见</li>
+</ul>
+<div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">Component</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Component</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><a href="#__codelineno-5-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">draw</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="p">};</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><a href="#__codelineno-5-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><a href="#__codelineno-5-10"><span class="linenos" data-linenos="10 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">TextView</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><a href="#__codelineno-5-11"><span class="linenos" data-linenos="11 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><a href="#__codelineno-5-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><a href="#__codelineno-5-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;TextView.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><a href="#__codelineno-5-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><a href="#__codelineno-5-15"><span class="linenos" data-linenos="15 "></span></a><span class="p">};</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><a href="#__codelineno-5-16"><span class="linenos" data-linenos="16 "></span></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><a href="#__codelineno-5-17"><span class="linenos" data-linenos="17 "></span></a><span class="c1">// 装饰器接口</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><a href="#__codelineno-5-18"><span class="linenos" data-linenos="18 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">Decorator</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><a href="#__codelineno-5-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="n">Component</span><span class="o">*</span><span class="w"> </span><span class="n">_component</span><span class="p">;</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><a href="#__codelineno-5-20"><span class="linenos" data-linenos="20 "></span></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a><a href="#__codelineno-5-21"><span class="linenos" data-linenos="21 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a><a href="#__codelineno-5-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="n">Decorator</span><span class="p">(</span><span class="n">Component</span><span class="o">*</span><span class="w"> </span><span class="n">component</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">_component</span><span class="p">(</span><span class="n">component</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><a href="#__codelineno-5-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">addon</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a><a href="#__codelineno-5-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><a href="#__codelineno-5-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">        </span><span class="n">addon</span><span class="p">();</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a><a href="#__codelineno-5-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">        </span><span class="n">_component</span><span class="o">-&gt;</span><span class="n">draw</span><span class="p">();</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a><a href="#__codelineno-5-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a><a href="#__codelineno-5-28"><span class="linenos" data-linenos="28 "></span></a><span class="p">};</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a><a href="#__codelineno-5-29"><span class="linenos" data-linenos="29 "></span></a>
+<a id="__codelineno-5-30" name="__codelineno-5-30"></a><a href="#__codelineno-5-30"><span class="linenos" data-linenos="30 "></span></a><span class="c1">// 不同的装饰器</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31"></a><a href="#__codelineno-5-31"><span class="linenos" data-linenos="31 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">Border</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Decorator</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32"></a><a href="#__codelineno-5-32"><span class="linenos" data-linenos="32 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33"></a><a href="#__codelineno-5-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">    </span><span class="n">Border</span><span class="p">(</span><span class="n">Component</span><span class="o">*</span><span class="w"> </span><span class="n">component</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Decorator</span><span class="p">(</span><span class="n">component</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34"></a><a href="#__codelineno-5-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">addon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Bordered &quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35"></a><a href="#__codelineno-5-35"><span class="linenos" data-linenos="35 "></span></a><span class="p">};</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36"></a><a href="#__codelineno-5-36"><span class="linenos" data-linenos="36 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">HScroll</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Decorator</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37"></a><a href="#__codelineno-5-37"><span class="linenos" data-linenos="37 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38"></a><a href="#__codelineno-5-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">    </span><span class="n">HScroll</span><span class="p">(</span><span class="n">Component</span><span class="o">*</span><span class="w"> </span><span class="n">component</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Decorator</span><span class="p">(</span><span class="n">component</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39"></a><a href="#__codelineno-5-39"><span class="linenos" data-linenos="39 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">addon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;HScrolled &quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40"></a><a href="#__codelineno-5-40"><span class="linenos" data-linenos="40 "></span></a><span class="p">};</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41"></a><a href="#__codelineno-5-41"><span class="linenos" data-linenos="41 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">VScroll</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Decorator</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42"></a><a href="#__codelineno-5-42"><span class="linenos" data-linenos="42 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43"></a><a href="#__codelineno-5-43"><span class="linenos" data-linenos="43 "></span></a><span class="w">    </span><span class="n">VScroll</span><span class="p">(</span><span class="n">Component</span><span class="o">*</span><span class="w"> </span><span class="n">component</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Decorator</span><span class="p">(</span><span class="n">component</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44"></a><a href="#__codelineno-5-44"><span class="linenos" data-linenos="44 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">addon</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;VScrolled &quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45"></a><a href="#__codelineno-5-45"><span class="linenos" data-linenos="45 "></span></a><span class="p">};</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46"></a><a href="#__codelineno-5-46"><span class="linenos" data-linenos="46 "></span></a>
+<a id="__codelineno-5-47" name="__codelineno-5-47"></a><a href="#__codelineno-5-47"><span class="linenos" data-linenos="47 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48"></a><a href="#__codelineno-5-48"><span class="linenos" data-linenos="48 "></span></a><span class="w">    </span><span class="n">TextView</span><span class="w"> </span><span class="n">textView</span><span class="p">;</span>
+<a id="__codelineno-5-49" name="__codelineno-5-49"></a><a href="#__codelineno-5-49"><span class="linenos" data-linenos="49 "></span></a><span class="w">    </span><span class="n">VScroll</span><span class="w"> </span><span class="n">vs_TextView</span><span class="p">(</span><span class="o">&amp;</span><span class="n">textView</span><span class="p">);</span>
+<a id="__codelineno-5-50" name="__codelineno-5-50"></a><a href="#__codelineno-5-50"><span class="linenos" data-linenos="50 "></span></a><span class="w">    </span><span class="n">HScroll</span><span class="w"> </span><span class="n">hs_vs_TextView</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vs_TextView</span><span class="p">);</span>
+<a id="__codelineno-5-51" name="__codelineno-5-51"></a><a href="#__codelineno-5-51"><span class="linenos" data-linenos="51 "></span></a><span class="w">    </span><span class="n">Border</span><span class="w"> </span><span class="n">b_hs_vs_TextView</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hs_vs_TextView</span><span class="p">);</span>
+<a id="__codelineno-5-52" name="__codelineno-5-52"></a><a href="#__codelineno-5-52"><span class="linenos" data-linenos="52 "></span></a><span class="w">    </span><span class="n">b_hs_vs_TextView</span><span class="p">.</span><span class="n">draw</span><span class="p">();</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53"></a><a href="#__codelineno-5-53"><span class="linenos" data-linenos="53 "></span></a>
+<a id="__codelineno-5-54" name="__codelineno-5-54"></a><a href="#__codelineno-5-54"><span class="linenos" data-linenos="54 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-5-55" name="__codelineno-5-55"></a><a href="#__codelineno-5-55"><span class="linenos" data-linenos="55 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="5">5. 责任传递与责任链<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>使用链式调用来组织程序行为的方法，称为<strong>责任链</strong>。将一系列的处理者连成一条链，将请求沿着这个链传递并由链上的处理者予以处理。</p>
+<p><strong>责任链</strong>和<strong>装饰</strong>都有调用链。不同点是：</p>
+<ul>
+<li>责任链更强调<strong>调用链的行为</strong></li>
+<li>装饰更强调<strong>调用链带来的组织结果</strong>（组成结构）</li>
+</ul>
+<p>也可以把<strong>责任链</strong>看成一连串<strong>代理</strong>。不同点是：</p>
+<ul>
+<li>代理模式改变对象的行为，控制被代理对象</li>
+<li>责任链组织多个对象的行为</li>
+</ul>
+<div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="  1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">MailRequest</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="  2 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">_reject</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos="  3 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos="  4 "></span></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">getSender</span><span class="p">();</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos="  5 "></span></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="nf">getTitle</span><span class="p">();</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos="  6 "></span></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="nf">getBody</span><span class="p">();</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos="  7 "></span></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="nf">getAll</span><span class="p">();</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><a href="#__codelineno-6-8"><span class="linenos" data-linenos="  8 "></span></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos="  9 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">accept</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_reject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos=" 10 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">reject</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_reject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><a href="#__codelineno-6-11"><span class="linenos" data-linenos=" 11 "></span></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos=" 12 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isReject</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">_reject</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos=" 13 "></span></a><span class="p">};</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><a href="#__codelineno-6-14"><span class="linenos" data-linenos=" 14 "></span></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><a href="#__codelineno-6-15"><span class="linenos" data-linenos=" 15 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><a href="#__codelineno-6-16"><span class="linenos" data-linenos=" 16 "></span></a><span class="w">    </span><span class="n">Handler</span><span class="w"> </span><span class="o">*</span><span class="n">_successor</span><span class="p">;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><a href="#__codelineno-6-17"><span class="linenos" data-linenos=" 17 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><a href="#__codelineno-6-18"><span class="linenos" data-linenos=" 18 "></span></a><span class="w">    </span><span class="n">Handler</span><span class="p">(</span><span class="n">Handler</span><span class="w"> </span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">_successor</span><span class="p">(</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><a href="#__codelineno-6-19"><span class="linenos" data-linenos=" 19 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Handler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><a href="#__codelineno-6-20"><span class="linenos" data-linenos=" 20 "></span></a>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><a href="#__codelineno-6-21"><span class="linenos" data-linenos=" 21 "></span></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">doHandle</span><span class="p">(</span><span class="n">MailRequest</span><span class="w"> </span><span class="o">*</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><a href="#__codelineno-6-22"><span class="linenos" data-linenos=" 22 "></span></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">handle</span><span class="p">(</span><span class="n">MailRequest</span><span class="w"> </span><span class="o">*</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><a href="#__codelineno-6-23"><span class="linenos" data-linenos=" 23 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">doHandle</span><span class="p">(</span><span class="n">request</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a><a href="#__codelineno-6-24"><span class="linenos" data-linenos=" 24 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_successor</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a><a href="#__codelineno-6-25"><span class="linenos" data-linenos=" 25 "></span></a><span class="w">                </span><span class="n">_successor</span><span class="o">-&gt;</span><span class="n">handle</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a><a href="#__codelineno-6-26"><span class="linenos" data-linenos=" 26 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a><a href="#__codelineno-6-27"><span class="linenos" data-linenos=" 27 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a><a href="#__codelineno-6-28"><span class="linenos" data-linenos=" 28 "></span></a><span class="p">};</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a><a href="#__codelineno-6-29"><span class="linenos" data-linenos=" 29 "></span></a>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a><a href="#__codelineno-6-30"><span class="linenos" data-linenos=" 30 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">SenderFilter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31"></a><a href="#__codelineno-6-31"><span class="linenos" data-linenos=" 31 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32"></a><a href="#__codelineno-6-32"><span class="linenos" data-linenos=" 32 "></span></a><span class="w">    </span><span class="n">SenderFilter</span><span class="p">(</span><span class="n">Handler</span><span class="w"> </span><span class="o">*</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Handler</span><span class="p">(</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33"></a><a href="#__codelineno-6-33"><span class="linenos" data-linenos=" 33 "></span></a>
+<a id="__codelineno-6-34" name="__codelineno-6-34"></a><a href="#__codelineno-6-34"><span class="linenos" data-linenos=" 34 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">doHandle</span><span class="p">(</span><span class="n">MailRequest</span><span class="w"> </span><span class="o">*</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35"></a><a href="#__codelineno-6-35"><span class="linenos" data-linenos=" 35 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isWhite</span><span class="p">(</span><span class="n">request</span><span class="o">-&gt;</span><span class="n">getSender</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36"></a><a href="#__codelineno-6-36"><span class="linenos" data-linenos=" 36 "></span></a><span class="w">            </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">accept</span><span class="p">();</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37"></a><a href="#__codelineno-6-37"><span class="linenos" data-linenos=" 37 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38"></a><a href="#__codelineno-6-38"><span class="linenos" data-linenos=" 38 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39"></a><a href="#__codelineno-6-39"><span class="linenos" data-linenos=" 39 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isBlack</span><span class="p">(</span><span class="n">request</span><span class="o">-&gt;</span><span class="n">getSender</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40"></a><a href="#__codelineno-6-40"><span class="linenos" data-linenos=" 40 "></span></a><span class="w">            </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">reject</span><span class="p">();</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41"></a><a href="#__codelineno-6-41"><span class="linenos" data-linenos=" 41 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42"></a><a href="#__codelineno-6-42"><span class="linenos" data-linenos=" 42 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43"></a><a href="#__codelineno-6-43"><span class="linenos" data-linenos=" 43 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-6-44" name="__codelineno-6-44"></a><a href="#__codelineno-6-44"><span class="linenos" data-linenos=" 44 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45"></a><a href="#__codelineno-6-45"><span class="linenos" data-linenos=" 45 "></span></a><span class="p">};</span>
+<a id="__codelineno-6-46" name="__codelineno-6-46"></a><a href="#__codelineno-6-46"><span class="linenos" data-linenos=" 46 "></span></a>
+<a id="__codelineno-6-47" name="__codelineno-6-47"></a><a href="#__codelineno-6-47"><span class="linenos" data-linenos=" 47 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">TitleFilter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-48" name="__codelineno-6-48"></a><a href="#__codelineno-6-48"><span class="linenos" data-linenos=" 48 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49"></a><a href="#__codelineno-6-49"><span class="linenos" data-linenos=" 49 "></span></a><span class="w">    </span><span class="n">TitleFilter</span><span class="p">(</span><span class="n">Handler</span><span class="w"> </span><span class="o">*</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Handler</span><span class="p">(</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-50" name="__codelineno-6-50"></a><a href="#__codelineno-6-50"><span class="linenos" data-linenos=" 50 "></span></a>
+<a id="__codelineno-6-51" name="__codelineno-6-51"></a><a href="#__codelineno-6-51"><span class="linenos" data-linenos=" 51 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">doHandle</span><span class="p">(</span><span class="n">MailRequest</span><span class="w"> </span><span class="o">*</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-52" name="__codelineno-6-52"></a><a href="#__codelineno-6-52"><span class="linenos" data-linenos=" 52 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isValid</span><span class="p">(</span><span class="n">request</span><span class="o">-&gt;</span><span class="n">getTitle</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-53" name="__codelineno-6-53"></a><a href="#__codelineno-6-53"><span class="linenos" data-linenos=" 53 "></span></a><span class="w">            </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">reject</span><span class="p">();</span>
+<a id="__codelineno-6-54" name="__codelineno-6-54"></a><a href="#__codelineno-6-54"><span class="linenos" data-linenos=" 54 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-6-55" name="__codelineno-6-55"></a><a href="#__codelineno-6-55"><span class="linenos" data-linenos=" 55 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-56" name="__codelineno-6-56"></a><a href="#__codelineno-6-56"><span class="linenos" data-linenos=" 56 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-6-57" name="__codelineno-6-57"></a><a href="#__codelineno-6-57"><span class="linenos" data-linenos=" 57 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-58" name="__codelineno-6-58"></a><a href="#__codelineno-6-58"><span class="linenos" data-linenos=" 58 "></span></a><span class="p">};</span>
+<a id="__codelineno-6-59" name="__codelineno-6-59"></a><a href="#__codelineno-6-59"><span class="linenos" data-linenos=" 59 "></span></a>
+<a id="__codelineno-6-60" name="__codelineno-6-60"></a><a href="#__codelineno-6-60"><span class="linenos" data-linenos=" 60 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">BodyFilter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-61" name="__codelineno-6-61"></a><a href="#__codelineno-6-61"><span class="linenos" data-linenos=" 61 "></span></a><span class="w">    </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="n">invalidTexts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;XXX&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;XXXX&quot;</span><span class="w"> </span><span class="cm">/*...*/</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-62" name="__codelineno-6-62"></a><a href="#__codelineno-6-62"><span class="linenos" data-linenos=" 62 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-6-63" name="__codelineno-6-63"></a><a href="#__codelineno-6-63"><span class="linenos" data-linenos=" 63 "></span></a><span class="w">    </span><span class="n">BodyFilter</span><span class="p">(</span><span class="n">Handler</span><span class="w"> </span><span class="o">*</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Handler</span><span class="p">(</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-64" name="__codelineno-6-64"></a><a href="#__codelineno-6-64"><span class="linenos" data-linenos=" 64 "></span></a>
+<a id="__codelineno-6-65" name="__codelineno-6-65"></a><a href="#__codelineno-6-65"><span class="linenos" data-linenos=" 65 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">doHandle</span><span class="p">(</span><span class="n">MailRequest</span><span class="w"> </span><span class="o">*</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-66" name="__codelineno-6-66"></a><a href="#__codelineno-6-66"><span class="linenos" data-linenos=" 66 "></span></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">invalidTexts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-67" name="__codelineno-6-67"></a><a href="#__codelineno-6-67"><span class="linenos" data-linenos=" 67 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">request</span><span class="o">-&gt;</span><span class="n">getBody</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-68" name="__codelineno-6-68"></a><a href="#__codelineno-6-68"><span class="linenos" data-linenos=" 68 "></span></a><span class="w">                </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">reject</span><span class="p">();</span>
+<a id="__codelineno-6-69" name="__codelineno-6-69"></a><a href="#__codelineno-6-69"><span class="linenos" data-linenos=" 69 "></span></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-6-70" name="__codelineno-6-70"></a><a href="#__codelineno-6-70"><span class="linenos" data-linenos=" 70 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-6-71" name="__codelineno-6-71"></a><a href="#__codelineno-6-71"><span class="linenos" data-linenos=" 71 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-72" name="__codelineno-6-72"></a><a href="#__codelineno-6-72"><span class="linenos" data-linenos=" 72 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-6-73" name="__codelineno-6-73"></a><a href="#__codelineno-6-73"><span class="linenos" data-linenos=" 73 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-74" name="__codelineno-6-74"></a><a href="#__codelineno-6-74"><span class="linenos" data-linenos=" 74 "></span></a><span class="p">};</span>
+<a id="__codelineno-6-75" name="__codelineno-6-75"></a><a href="#__codelineno-6-75"><span class="linenos" data-linenos=" 75 "></span></a>
+<a id="__codelineno-6-76" name="__codelineno-6-76"></a><a href="#__codelineno-6-76"><span class="linenos" data-linenos=" 76 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">DefaultFilter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-77" name="__codelineno-6-77"></a><a href="#__codelineno-6-77"><span class="linenos" data-linenos=" 77 "></span></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-6-78" name="__codelineno-6-78"></a><a href="#__codelineno-6-78"><span class="linenos" data-linenos=" 78 "></span></a><span class="w">    </span><span class="n">DefaultFilter</span><span class="p">(</span><span class="n">Handler</span><span class="w"> </span><span class="o">*</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Handler</span><span class="p">(</span><span class="n">successor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-79" name="__codelineno-6-79"></a><a href="#__codelineno-6-79"><span class="linenos" data-linenos=" 79 "></span></a>
+<a id="__codelineno-6-80" name="__codelineno-6-80"></a><a href="#__codelineno-6-80"><span class="linenos" data-linenos=" 80 "></span></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">doHandle</span><span class="p">(</span><span class="n">MailRequest</span><span class="w"> </span><span class="o">*</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-81" name="__codelineno-6-81"></a><a href="#__codelineno-6-81"><span class="linenos" data-linenos=" 81 "></span></a><span class="w">        </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">reject</span><span class="p">();</span>
+<a id="__codelineno-6-82" name="__codelineno-6-82"></a><a href="#__codelineno-6-82"><span class="linenos" data-linenos=" 82 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-6-83" name="__codelineno-6-83"></a><a href="#__codelineno-6-83"><span class="linenos" data-linenos=" 83 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-84" name="__codelineno-6-84"></a><a href="#__codelineno-6-84"><span class="linenos" data-linenos=" 84 "></span></a><span class="p">};</span>
+<a id="__codelineno-6-85" name="__codelineno-6-85"></a><a href="#__codelineno-6-85"><span class="linenos" data-linenos=" 85 "></span></a>
+<a id="__codelineno-6-86" name="__codelineno-6-86"></a><a href="#__codelineno-6-86"><span class="linenos" data-linenos=" 86 "></span></a><span class="c1">// 测试代码</span>
+<a id="__codelineno-6-87" name="__codelineno-6-87"></a><a href="#__codelineno-6-87"><span class="linenos" data-linenos=" 87 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-88" name="__codelineno-6-88"></a><a href="#__codelineno-6-88"><span class="linenos" data-linenos=" 88 "></span></a><span class="w">    </span><span class="n">DefaultFilter</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<a id="__codelineno-6-89" name="__codelineno-6-89"></a><a href="#__codelineno-6-89"><span class="linenos" data-linenos=" 89 "></span></a><span class="w">    </span><span class="n">BodyFilter</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f1</span><span class="p">);</span>
+<a id="__codelineno-6-90" name="__codelineno-6-90"></a><a href="#__codelineno-6-90"><span class="linenos" data-linenos=" 90 "></span></a><span class="w">    </span><span class="n">TitleFilter</span><span class="w"> </span><span class="n">f3</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f2</span><span class="p">);</span>
+<a id="__codelineno-6-91" name="__codelineno-6-91"></a><a href="#__codelineno-6-91"><span class="linenos" data-linenos=" 91 "></span></a><span class="w">    </span><span class="n">SenderFilter</span><span class="w"> </span><span class="n">f4</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f3</span><span class="p">);</span>
+<a id="__codelineno-6-92" name="__codelineno-6-92"></a><a href="#__codelineno-6-92"><span class="linenos" data-linenos=" 92 "></span></a>
+<a id="__codelineno-6-93" name="__codelineno-6-93"></a><a href="#__codelineno-6-93"><span class="linenos" data-linenos=" 93 "></span></a><span class="w">    </span><span class="n">Request</span><span class="w"> </span><span class="o">*</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getRequest</span><span class="p">();</span>
+<a id="__codelineno-6-94" name="__codelineno-6-94"></a><a href="#__codelineno-6-94"><span class="linenos" data-linenos=" 94 "></span></a><span class="w">    </span><span class="n">f4</span><span class="p">.</span><span class="n">handler</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<a id="__codelineno-6-95" name="__codelineno-6-95"></a><a href="#__codelineno-6-95"><span class="linenos" data-linenos=" 95 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">isReject</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-96" name="__codelineno-6-96"></a><a href="#__codelineno-6-96"><span class="linenos" data-linenos=" 96 "></span></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Reject it.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-6-97" name="__codelineno-6-97"></a><a href="#__codelineno-6-97"><span class="linenos" data-linenos=" 97 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-98" name="__codelineno-6-98"></a><a href="#__codelineno-6-98"><span class="linenos" data-linenos=" 98 "></span></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-99" name="__codelineno-6-99"></a><a href="#__codelineno-6-99"><span class="linenos" data-linenos=" 99 "></span></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Accept is.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-6-100" name="__codelineno-6-100"></a><a href="#__codelineno-6-100"><span class="linenos" data-linenos="100 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-101" name="__codelineno-6-101"></a><a href="#__codelineno-6-101"><span class="linenos" data-linenos="101 "></span></a><span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../ch7/" class="md-footer__link md-footer__link--prev" aria-label="上一页: ch7 算法纵向拆分,分离表示">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                ch7 算法纵向拆分,分离表示
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ch9/" class="md-footer__link md-footer__link--next" aria-label="下一页: ch9 增加抽象层级,隔离复杂变化">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                ch9 增加抽象层级,隔离复杂变化
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 南朔
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/ErnestEarth/jifeng" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.prune", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

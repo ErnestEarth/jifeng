@@ -1,0 +1,1677 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="2024 年第三期疾风计划的学习笔记">
+      
+      
+        <meta name="author" content="南朔">
+      
+      
+        <link rel="canonical" href="https://ernestearth.github.io/jifeng/Discrete_Mathematics/ch8/">
+      
+      
+        <link rel="prev" href="../ch7/">
+      
+      
+        <link rel="next" href="../ch9/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+    
+    
+      
+        <title>ch8 函数 - 疾风计划笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ch8" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="疾风计划笔记" class="md-header__button md-logo" aria-label="疾风计划笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            疾风计划笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ch8 函数
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="亮色"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="亮色" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="暗色"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="暗色" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  课程概览
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Fundamentals_of_Programming/" class="md-tabs__link">
+          
+  
+  程设基础
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Object_Oriented_Programming/" class="md-tabs__link">
+          
+  
+  面向对象
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  离散数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Data_Structure/" class="md-tabs__link">
+          
+  
+  数据结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Principles_of_Computer_Organization/" class="md-tabs__link">
+          
+  
+  计组原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Algorithm_Design_and_Analysis/" class="md-tabs__link">
+          
+  
+  算法分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Operating_System/" class="md-tabs__link">
+          
+  
+  操作系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Computer_Networks/" class="md-tabs__link">
+          
+  
+  计算机网络
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Principles_and_Development_of_Database_Systems/" class="md-tabs__link">
+          
+  
+  数据库系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Compiler_Principle/" class="md-tabs__link">
+          
+  
+  编译原理
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Software_Engineering/" class="md-tabs__link">
+          
+  
+  软件工程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Introduction_to_Machine_Learning/" class="md-tabs__link">
+          
+  
+  机器学习概论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Principles_of_Artificial_Intelligence/" class="md-tabs__link">
+          
+  
+  人工智能原理
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="疾风计划笔记" class="md-nav__button md-logo" aria-label="疾风计划笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+
+    </a>
+    疾风计划笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Fundamentals_of_Programming/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    程设基础
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Object_Oriented_Programming/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    面向对象
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    离散数学
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程简介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch1 命题逻辑的基本概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch2 命题逻辑的推理演算
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch3 命题逻辑的公理化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch4 谓词逻辑的基本概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch5 谓词逻辑的推理演算
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch6 集合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch7 关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ch8 函数
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ch8 函数
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 函数与选择公理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 函数的合成与函数的逆
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 函数的性质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 特征函数、模糊子集
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ch9 实数集合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Data_Structure/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Principles_of_Computer_Organization/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计组原理
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Algorithm_Design_and_Analysis/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    算法分析
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Operating_System/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Computer_Networks/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Principles_and_Development_of_Database_Systems/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据库系统
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Compiler_Principle/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    编译原理
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Software_Engineering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    软件工程
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Introduction_to_Machine_Learning/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    机器学习概论
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Principles_of_Artificial_Intelligence/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能原理
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 函数与选择公理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 函数的合成与函数的逆
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 函数的性质
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 特征函数、模糊子集
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ch8">ch8 函数<a class="headerlink" href="#ch8" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 函数与选择公理<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>【函数的表示方法】列表法、图像法、解析法。</p>
+<p>【函数】对集合 <span class="arithmatex">\(A\)</span> 到集合 <span class="arithmatex">\(B\)</span> 的关系 <span class="arithmatex">\(f\)</span>，若满足 <span class="arithmatex">\(\forall x\in dom(f)\)</span>，存在唯一的 <span class="arithmatex">\(y\in ran(f)\)</span>，使 <span class="arithmatex">\(xfy\)</span> 成立，且 <span class="arithmatex">\(dom(f) = A\)</span>，则称 <span class="arithmatex">\(f\)</span> 为从 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(B\)</span> 的函数，或称 <span class="arithmatex">\(f\)</span> 把 <span class="arithmatex">\(A\)</span> 映射到 <span class="arithmatex">\(B\)</span>。一个从 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(B\)</span> 的函数 <span class="arithmatex">\(f\)</span>，可以写成 <span class="arithmatex">\(f:A\to B\)</span>。这时若 <span class="arithmatex">\(xfy\)</span>，则可记作 <span class="arithmatex">\(f:x|\to y\)</span> 或 <span class="arithmatex">\(f(x) = y\)</span>。</p>
+<ul>
+<li>单值性：<span class="arithmatex">\((\forall x)(\forall y_1)(\forall y_2)((xfy_1\land xfy_2)\to y_1=y_2\)</span>，同一个 <span class="arithmatex">\(x\)</span> 不能对应多个 <span class="arithmatex">\(y\)</span>，但是多个 <span class="arithmatex">\(x\)</span> 可以对应同一个 <span class="arithmatex">\(y\)</span>，因此函数的逆关系不一定是函数。</li>
+<li>定义域必须取遍 <span class="arithmatex">\(A\)</span> 中所有元素：<span class="arithmatex">\((\forall x)(x\in A\to (\exists y)(y\in B\land xfy))\)</span></li>
+<li>关系矩阵每行有且仅有一个 <span class="arithmatex">\(1\)</span>，其余均为 <span class="arithmatex">\(0\)</span>。</li>
+<li>关系图上，集合 <span class="arithmatex">\(A\)</span> 中的每个顶点恰好发出一条有向边。</li>
+</ul>
+<p>【从 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(B\)</span> 的所有函数的集合】对集合 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span>，从 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(B\)</span> 的所有函数的集合记为 <span class="arithmatex">\(A_B\)</span>，于是 <span class="arithmatex">\(A_B = \{f|f:A\to B\}\)</span>。若 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span> 是有限集合，且 <span class="arithmatex">\(|A| = m,|B|=n\)</span>，则 <span class="arithmatex">\(|A_B| = n^m = |B|^{|A|}\)</span>。</p>
+<p>【函数的象】设 <span class="arithmatex">\(f:A\to B\)</span>，<span class="arithmatex">\(A_1\subseteq A\)</span>，定义 <span class="arithmatex">\(A_1\)</span> 在 <span class="arithmatex">\(f\)</span> 下的象 <span class="arithmatex">\(f[A_1]\)</span> 为 <span class="arithmatex">\(f[A_1] = \{y|(\exists x)(x\in A_1\land y = f(x))\}\)</span>，把 <span class="arithmatex">\(f[A]\)</span> 称为函数的象。设 <span class="arithmatex">\(B_1\subseteq B\)</span>，定义 <span class="arithmatex">\(B_1\)</span> 在 <span class="arithmatex">\(f\)</span> 下的完全原象 <span class="arithmatex">\(f^{-1}[B_1]\)</span> 为 <span class="arithmatex">\(f^{-1}[B_1] = \{x|x\in A\land f(x)\in B_1\}\)</span>。</p>
+<p>【满射】设 <span class="arithmatex">\(f:A\to B\)</span>，若 <span class="arithmatex">\(ran(f) = B\)</span>，则称 <span class="arithmatex">\(f\)</span> 是满射的。</p>
+<p>【单射】设 <span class="arithmatex">\(f:A\to B\)</span>，若对任意的 <span class="arithmatex">\(x_1,x_2\in A, x_1\ne x_2\)</span> 都有 <span class="arithmatex">\(f(x_1)\ne f(x_2)\)</span>，则称 <span class="arithmatex">\(f\)</span> 是单射的，或内射的。</p>
+<p>【双射】设 <span class="arithmatex">\(f: A\to B\)</span>，若 <span class="arithmatex">\(f\)</span> 既是满射的，又是单射的，则称 <span class="arithmatex">\(f\)</span> 是双射的，或一对一 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(B\)</span> 上的。</p>
+<p>【常函数】设 <span class="arithmatex">\(f:A\to B\)</span>，如果存在一个 <span class="arithmatex">\(y\in B\)</span>，使得对所有的 <span class="arithmatex">\(x\in A\)</span>，有 <span class="arithmatex">\(f(x) = y\)</span>，即有 <span class="arithmatex">\(f[A] = \{y\}\)</span>，则称 <span class="arithmatex">\(f:A\to B\)</span> 为常函数。</p>
+<p>【恒等函数】<span class="arithmatex">\(A\)</span> 上的恒等关系 <span class="arithmatex">\(I_A:A\to A\)</span> 称为恒等函数，于是，对任意的 <span class="arithmatex">\(x\in A\)</span>，有 <span class="arithmatex">\(I_A(x) = x\)</span>。</p>
+<p>【单调函数】对实数集 <span class="arithmatex">\(R\)</span>，设 <span class="arithmatex">\(f: R\to R\)</span>，如果 <span class="arithmatex">\((x\le y)\to (f(x)\le f(y))\)</span>，则称 <span class="arithmatex">\(f\)</span> 是单调递增的；如果 <span class="arithmatex">\((x&lt; y)\to(f(x)&lt; f(y))\)</span>，则称 <span class="arithmatex">\(f\)</span> 为严格单调递增的。</p>
+<p>【<span class="arithmatex">\(n\)</span> 元运算】对集合 <span class="arithmatex">\(A\)</span>，<span class="arithmatex">\(n\in N\)</span>，称函数 <span class="arithmatex">\(f:A^n\to A\)</span> 为 <span class="arithmatex">\(A\)</span> 上的 <span class="arithmatex">\(n\)</span> 元运算。</p>
+<p>【泛函】设 <span class="arithmatex">\(A,B,C\)</span> 是集合，<span class="arithmatex">\(B_C\)</span> 为从 <span class="arithmatex">\(B\)</span> 到 <span class="arithmatex">\(C\)</span> 的所有函数的集合，则 <span class="arithmatex">\(F:A\to B_C\)</span> 称为一个泛函（有时将 <span class="arithmatex">\(G:B_C\to A\)</span> 称为一个泛函）。</p>
+<p>【典型映射 / 自然映射】设 <span class="arithmatex">\(R\)</span> 是 <span class="arithmatex">\(A\)</span> 上的等价关系，令 <span class="arithmatex">\(g:A\to A/R\)</span>，<span class="arithmatex">\(g(a) = [a]_R\)</span>，则称 <span class="arithmatex">\(g\)</span> 为从 <span class="arithmatex">\(A\)</span> 到商集 <span class="arithmatex">\(A/R\)</span> 的典型映射或自然映射，其中 <span class="arithmatex">\(A/R\)</span> 是以 <span class="arithmatex">\(R\)</span> 的等价类为元素的集合。</p>
+<p>【选择公理】对任意的关系 <span class="arithmatex">\(R\)</span>，存在函数 <span class="arithmatex">\(f\)</span>，使得 <span class="arithmatex">\(f\subseteq R\)</span> 且 <span class="arithmatex">\(dom(f) = dom(R)\)</span>。设 <span class="arithmatex">\(C\)</span> 为一个由非空集合所组成的集合。那么我们可以从每一个在 <span class="arithmatex">\(C\)</span> 中的集合中，都选择一个元素和其所在的集合配成有序对来组成一个新的集合。</p>
+<h2 id="2">2. 函数的合成与函数的逆<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>【函数的合成】设 <span class="arithmatex">\(g:A\to B\)</span>，<span class="arithmatex">\(f:B\to C\)</span>，则 <span class="arithmatex">\(f\circ g\)</span> 是函数 <span class="arithmatex">\(f\circ g: A\to C\)</span>，且对任意的 <span class="arithmatex">\(x\in A\)</span>，有 <span class="arithmatex">\((f\circ g)(x) = f(g(x))\)</span>。</p>
+<ul>
+<li>若 <span class="arithmatex">\(f,g\)</span> 是满射的，则 <span class="arithmatex">\(f\circ g\)</span> 是满射的。</li>
+<li>若 <span class="arithmatex">\(f,g\)</span> 是单射的，则 <span class="arithmatex">\(f\circ g\)</span> 是单射的。</li>
+<li>若 <span class="arithmatex">\(f,g\)</span> 是双射的，则 <span class="arithmatex">\(f\circ g\)</span> 是双射的。</li>
+<li>若 <span class="arithmatex">\(f\circ g\)</span> 是满射的，则 <span class="arithmatex">\(f\)</span> 是满射的。</li>
+<li>若 <span class="arithmatex">\(f\circ g\)</span> 是单射的，则 <span class="arithmatex">\(g\)</span> 是单射的。</li>
+<li>若 <span class="arithmatex">\(f\circ g\)</span> 是双射的，则 <span class="arithmatex">\(f\)</span> 是满射的，<span class="arithmatex">\(g\)</span> 是单射的。</li>
+</ul>
+<p>【定理】设 <span class="arithmatex">\(f:A\to B\)</span>，则 <span class="arithmatex">\(f = f\circ I_A \ I_B\circ f\)</span></p>
+<p>【函数的逆与反函数】若 <span class="arithmatex">\(f:A\to B\)</span> 是双射的，则 <span class="arithmatex">\(f^{-1}\)</span> 是函数，<span class="arithmatex">\(f^{-1}: B\to A\)</span>。称 <span class="arithmatex">\(f^{-1}:B\to A\)</span> 为 <span class="arithmatex">\(f\)</span> 的反函数。且反函数 <span class="arithmatex">\(f^{-1}:B\to A\)</span> 是双射的。</p>
+<p>【定理】若 <span class="arithmatex">\(f:A\to B\)</span> 是双射的，则对任意的 <span class="arithmatex">\(x\in A\)</span>，有 <span class="arithmatex">\(f^{-1}(f(x)) = x\)</span>，对任意的 <span class="arithmatex">\(y\in B\)</span>，有 <span class="arithmatex">\(f(f^{-1}(y)) = y\)</span>。</p>
+<p>【左逆和右逆】设 <span class="arithmatex">\(f:A\to B\)</span>，<span class="arithmatex">\(g: B\to A\)</span>，如果 <span class="arithmatex">\(g\circ f = I_A\)</span>，则称 <span class="arithmatex">\(g\)</span> 为 <span class="arithmatex">\(f\)</span> 的左逆；如果 <span class="arithmatex">\(f\circ g = I_B\)</span>，则称 <span class="arithmatex">\(g\)</span> 为 <span class="arithmatex">\(f\)</span> 的右逆。</p>
+<p>【定理】设 <span class="arithmatex">\(f:A\to B\)</span>，<span class="arithmatex">\(A\ne \varnothing\)</span>，则</p>
+<ul>
+<li><span class="arithmatex">\(f\)</span> 存在左逆，当且仅当 <span class="arithmatex">\(f\)</span> 是单射的；</li>
+<li><span class="arithmatex">\(f\)</span> 存在右逆，当且仅当 <span class="arithmatex">\(f\)</span> 是满射的；</li>
+<li><span class="arithmatex">\(f\)</span> 存在左逆又存在右逆，当且仅当 <span class="arithmatex">\(f\)</span> 是双射的，且此时 <span class="arithmatex">\(f\)</span> 的左逆等于右逆。</li>
+</ul>
+<h2 id="3">3. 函数的性质<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>【函数的相容性】设 <span class="arithmatex">\(f:A\to B\)</span>，<span class="arithmatex">\(g:C\to D\)</span>，如果对任意的 <span class="arithmatex">\(x\in A\cap C\)</span>，都有 <span class="arithmatex">\(f(x) = g(x)\)</span>，就说 <span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(g\)</span> 是相容的。</p>
+<p>【函数集的相容性】设 <span class="arithmatex">\(C\)</span> 是由一些函数组成的集合，如果 <span class="arithmatex">\(C\)</span> 中任意两个函数 <span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(g\)</span> 都是相容的，就说 <span class="arithmatex">\(C\)</span> 是相容的。</p>
+<p>【定理】设 <span class="arithmatex">\(f:A\to B\)</span>，<span class="arithmatex">\(g:C\to D\)</span>，则 <span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(g\)</span> 是相容的当且仅当 <span class="arithmatex">\(f\cup g\)</span> 是函数。</p>
+<p>【定理】设 <span class="arithmatex">\(f:A\to B\)</span>，<span class="arithmatex">\(g:C\to D\)</span>，则 <span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(g\)</span> 是相容的当且仅当 <span class="arithmatex">\(f\uparrow (A\cap C) = g\uparrow (A\cap C)\)</span>。</p>
+<p>【定理】对函数的集合 <span class="arithmatex">\(C\)</span>，若 <span class="arithmatex">\(C\)</span> 是相容的，且 <span class="arithmatex">\(F=\cup C\)</span>，则 <span class="arithmatex">\(F\)</span> 是函数 <span class="arithmatex">\(F:dom(F)\to ran(F)\)</span>，且 <span class="arithmatex">\(dom(F) = \cup\{dom(f)|f\in C\}\)</span>。相容的函数集合 <span class="arithmatex">\(C\)</span> 可以构造一个函数 <span class="arithmatex">\(F\)</span>。</p>
+<p>【关系与函数的相容性】设 <span class="arithmatex">\(R\)</span> 是 <span class="arithmatex">\(A\)</span> 上的等价关系，且 <span class="arithmatex">\(f:A\to A\)</span>，如果对任意的 <span class="arithmatex">\(x,y\in A\)</span>，有 <span class="arithmatex">\(&lt;x,y&gt;\in R\Rightarrow &lt;f(x),f(y)&gt;\in R\)</span>，则称关系 <span class="arithmatex">\(R\)</span> 与函数 <span class="arithmatex">\(f\)</span> 是相容的。</p>
+<p>【定理】设 <span class="arithmatex">\(R\)</span> 是 <span class="arithmatex">\(A\)</span> 上的等价关系，且 <span class="arithmatex">\(f:A\to A\)</span>，如果 <span class="arithmatex">\(R\)</span> 与 <span class="arithmatex">\(f\)</span> 是相容的，则存在唯一的函数 <span class="arithmatex">\(F:A/R\to A/R\)</span>，使 <span class="arithmatex">\(F([x]_R) = [f(x)]_R\)</span>；如果 <span class="arithmatex">\(R\)</span> 与 <span class="arithmatex">\(f\)</span> 不相容，则不存在这样的函数 <span class="arithmatex">\(F\)</span>。</p>
+<h2 id="4">4. 特征函数、模糊子集<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>【特征函数】设 <span class="arithmatex">\(E\)</span> 是全集，对任意的 <span class="arithmatex">\(A\subseteq E\)</span>，<span class="arithmatex">\(A\)</span> 的特征函数 <span class="arithmatex">\(\chi_A\)</span> 定义为：
+$$
+\chi_A: E\to {0,1}, \chi_A(a) = 
+\begin{cases}
+1 &amp; a\in A\
+0 &amp; a\notin A
+\end{cases}
+$$</p>
+<ul>
+<li><span class="arithmatex">\((\forall x)(\chi_A(x) = 0)\Leftrightarrow A = \varnothing\)</span></li>
+<li><span class="arithmatex">\((\forall x)(\chi_A(x) = 1)\Leftrightarrow A = E\)</span></li>
+<li><span class="arithmatex">\((\forall x)(\chi_A(x)\le \chi_B(X)) \Leftrightarrow A\subseteq B\)</span></li>
+<li><span class="arithmatex">\((\forall x)(\chi_A(x)= \chi_B(X)) \Leftrightarrow A= B\)</span></li>
+<li><span class="arithmatex">\(\chi_{A\cap B}(x) = \chi_A\times \chi_B(x)\)</span></li>
+<li><span class="arithmatex">\(\chi_{A\cup B}(x) = \chi_A(x) + \chi_B(x) - \chi_{A\cap B}(x)\)</span></li>
+<li><span class="arithmatex">\(\chi_{A-B}(x) = \chi_A(x) - \chi_{A\cap B}(X)\)</span></li>
+<li><span class="arithmatex">\(\chi_{-A}(x) = 1 - \chi_A(x)\)</span></li>
+</ul>
+<p>【模糊集合】如果 <span class="arithmatex">\(E\)</span> 是对象 <span class="arithmatex">\(x\)</span> 的集合，则 <span class="arithmatex">\(E\)</span> 上的模糊集合 <span class="arithmatex">\(A:A = \{(x,\mu_A(x))|x\in E\}\)</span>，<span class="arithmatex">\(\mu_A(x)\)</span> 称为模糊集合 <span class="arithmatex">\(A\)</span> 的隶属函数。</p>
+<p>【隶属函数】设 <span class="arithmatex">\(E\)</span> 是全集，对任意的 <span class="arithmatex">\(A\subseteq E\)</span>，<span class="arithmatex">\(A\)</span> 的隶属函数 <span class="arithmatex">\(\chi_A\)</span> 定义为 <span class="arithmatex">\(\chi_A: E\to \{0,1\}, \chi_A(a)\to[0,1]\)</span>。</p>
+<ul>
+<li>隶属函数取值在 <span class="arithmatex">\(0\)</span> 和 <span class="arithmatex">\(1\)</span> 之间，其值的确定具有主观性和个人的偏好。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../ch7/" class="md-footer__link md-footer__link--prev" aria-label="上一页: ch7 关系">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                ch7 关系
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ch9/" class="md-footer__link md-footer__link--next" aria-label="下一页: ch9 实数集合">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                ch9 实数集合
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 南朔
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/ErnestEarth/jifeng" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.prune", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
